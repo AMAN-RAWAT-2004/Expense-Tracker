@@ -36,7 +36,7 @@ Public Class Form1
         Dim conn = db.OpenConn()
 
         Dim email As String = TextBox1.Text
-        Dim password As String = TextBox2.Text
+        Dim password As String = HashPassword(TextBox2.Text)
 
         If email = "" Or password = "" Then
             MessageBox.Show("Please fill all fields")

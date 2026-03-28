@@ -8,7 +8,7 @@ Public Class register
 
         Dim name As String = TextBox1.Text
         Dim email As String = TextBox2.Text
-        Dim password As String = TextBox3.Text
+        Dim password As String = HashPassword(TextBox3.Text)
 
 
         If name = "" Or email = "" Or password = "" Then
