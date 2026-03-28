@@ -38,6 +38,18 @@ Public Class register
         End Try
 
     End Sub
+    Private Sub Button1_MouseHover(sender As Object, e As EventArgs) Handles Button1.MouseHover
+        Button1.BackColor = Color.White
+        Button1.ForeColor = Color.Maroon
+
+
+    End Sub
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
+
+        Button1.BackColor = Color.Maroon
+        Button1.ForeColor = Color.White
+
+    End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
 
