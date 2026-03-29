@@ -27,7 +27,8 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Stats.Show()
+        Dim stats As New Stats(currentUser)
+        stats.Show()
     End Sub
     Private Sub Button2_MouseEnter(sender As Object, e As EventArgs) Handles Button2.MouseEnter
         Button2.BackColor = Color.Maroon
