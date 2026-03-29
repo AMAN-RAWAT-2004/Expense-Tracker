@@ -26,4 +26,37 @@
         Button1.ForeColor = Color.White
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Stats.Show()
+    End Sub
+    Private Sub Button2_MouseEnter(sender As Object, e As EventArgs) Handles Button2.MouseEnter
+        Button2.BackColor = Color.Maroon
+        Button2.ForeColor = Color.White
+    End Sub
+
+    Private Sub Button2_MouseLeave(sender As Object, e As EventArgs) Handles Button2.MouseLeave
+        Button2.BackColor = Color.Transparent
+        Button2.ForeColor = Color.Maroon
+
+    End Sub
+    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
+        Button3.BackColor = Color.Maroon
+        Button3.ForeColor = Color.White
+    End Sub
+
+    Private Sub Button3_MouseLeave(sender As Object, e As EventArgs) Handles Button3.MouseLeave
+        Button3.BackColor = Color.Transparent
+        Button3.ForeColor = Color.Maroon
+
+    End Sub
+    Private Sub Button4_MouseEnter(sender As Object, e As EventArgs) Handles Button4.MouseEnter
+        Button4.BackColor = Color.Maroon
+        Button4.ForeColor = Color.White
+    End Sub
+
+    Private Sub Button4_MouseLeave(sender As Object, e As EventArgs) Handles Button4.MouseLeave
+        Button4.BackColor = Color.Transparent
+        Button4.ForeColor = Color.Maroon
+
+    End Sub
 End Class

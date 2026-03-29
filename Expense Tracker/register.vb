@@ -3,33 +3,50 @@
 Public Class register
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim db As db = New db()
+        Dim db As New db()
         Dim conn = db.OpenConn()
 
-        Dim name As String = TextBox1.Text
-        Dim email As String = TextBox2.Text
-        Dim password As String = HashPassword(TextBox3.Text)
+        Dim username As String = TextBox1.Text.Trim()
+        Dim email As String = TextBox2.Text.Trim()
+        Dim password As String = TextBox3.Text.Trim()
 
-
-        If name = "" Or email = "" Or password = "" Then
+        ' Validation
+        If username = "" Or email = "" Or password = "" Then
             MessageBox.Show("Please fill all fields")
             Exit Sub
         End If
 
+        ' Hash password
+        Dim hashedPassword As String = HashPassword(password)
 
-        Dim query As String = "INSERT INTO Users (name, email, password) VALUES (@name, @email, @password)"
+        ' Check if user already exists
+        Dim checkQuery As String = "SELECT COUNT(*) FROM Users WHERE Username=@Username OR Email=@Email"
+        Dim checkCmd As New SqlCommand(checkQuery, conn)
+        checkCmd.Parameters.AddWithValue("@Username", username)
+        checkCmd.Parameters.AddWithValue("@Email", email)
+
+        Dim exists As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+
+        If exists > 0 Then
+            MessageBox.Show("Username or Email already exists")
+            Exit Sub
+        End If
+
+        ' Insert query (UPDATED 🔥)
+        Dim query As String = "INSERT INTO Users (Username, Email, PasswordHash) 
+                          VALUES (@Username, @Email, @PasswordHash)"
+
         Dim cmd As New SqlCommand(query, conn)
-
-        cmd.Parameters.AddWithValue("@name", name)
-        cmd.Parameters.AddWithValue("@email", email)
-        cmd.Parameters.AddWithValue("@password", password)
+        cmd.Parameters.AddWithValue("@Username", username)
+        cmd.Parameters.AddWithValue("@Email", email)
+        cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword)
 
         Try
             cmd.ExecuteNonQuery()
             MessageBox.Show("Registration Successful!")
 
-            ' Go back to login
-            Dim login As New Form1
+            ' Go to login form
+            Dim login As New Form1()
             login.Show()
             Me.Hide()
 

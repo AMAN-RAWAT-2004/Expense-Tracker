@@ -32,22 +32,29 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim db As db = New db()
+        Dim db As New db()
         Dim conn = db.OpenConn()
 
-        Dim email As String = TextBox1.Text
-        Dim password As String = HashPassword(TextBox2.Text)
+        Dim email As String = TextBox1.Text.Trim()
+        Dim password As String = TextBox2.Text.Trim()
 
+        ' Validation
         If email = "" Or password = "" Then
             MessageBox.Show("Please fill all fields")
             Exit Sub
         End If
 
-        Dim query As String = "SELECT Name, Email,Password FROM Users WHERE email=@email AND password=@password"
-        Dim cmd As New SqlCommand(query, conn)
+        ' Hash password
+        Dim hashedPassword As String = HashPassword(password)
 
-        cmd.Parameters.AddWithValue("@email", email)
-        cmd.Parameters.AddWithValue("@password", password)
+        ' UPDATED QUERY 🔥
+        Dim query As String = "SELECT Id, Username, Email 
+                          FROM Users 
+                          WHERE Email=@Email AND PasswordHash=@PasswordHash"
+
+        Dim cmd As New SqlCommand(query, conn)
+        cmd.Parameters.AddWithValue("@Email", email)
+        cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword)
 
         Try
             Dim reader As SqlDataReader = cmd.ExecuteReader()
@@ -58,26 +65,27 @@ Public Class Form1
                 ' Create session object
                 Dim session As New UserSession()
 
-                session.UserName = reader("Name").ToString()
+                session.UserId = Convert.ToInt32(reader("Id"))   ' 🔥 important
+                session.UserName = reader("Username").ToString()
                 session.UserEmail = reader("Email").ToString()
 
-                ' Pass session to HomePage
+                reader.Close()
+
+                ' Open dashboard
                 Dim dashboard As New HomePage(session)
                 dashboard.Show()
-
                 Me.Hide()
+
             Else
                 MessageBox.Show("Invalid Email or Password")
+                reader.Close()
             End If
-
-            reader.Close()
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         End Try
 
     End Sub
-
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
