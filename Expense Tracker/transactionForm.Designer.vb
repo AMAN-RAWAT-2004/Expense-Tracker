@@ -224,6 +224,7 @@ Partial Class transactionForm
         ' 
         ' cmbCategory
         ' 
+        cmbCategory.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         cmbCategory.FormattingEnabled = True
         cmbCategory.Location = New Point(246, 394)
         cmbCategory.MaxDropDownItems = 2
@@ -233,6 +234,7 @@ Partial Class transactionForm
         ' 
         ' cmbType
         ' 
+        cmbType.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         cmbType.FormattingEnabled = True
         cmbType.Location = New Point(246, 328)
         cmbType.MaxDropDownItems = 2

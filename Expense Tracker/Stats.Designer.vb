@@ -42,11 +42,11 @@ Partial Class Stats
         Label5 = New Label()
         lblIncome = New Label()
         Panel4 = New Panel()
+        dgvRecent = New DataGridView()
         Label7 = New Label()
         Button5 = New Button()
         Label3 = New Label()
         Label2 = New Label()
-        DataGridView1 = New DataGridView()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         Panel1.SuspendLayout()
@@ -55,7 +55,7 @@ Partial Class Stats
         Panel6.SuspendLayout()
         Panel5.SuspendLayout()
         Panel4.SuspendLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvRecent, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -271,13 +271,25 @@ Partial Class Stats
         ' Panel4
         ' 
         Panel4.BackColor = Color.White
-        Panel4.Controls.Add(DataGridView1)
+        Panel4.Controls.Add(dgvRecent)
         Panel4.Controls.Add(Label7)
         Panel4.Controls.Add(Button5)
         Panel4.Location = New Point(19, 385)
         Panel4.Name = "Panel4"
         Panel4.Size = New Size(872, 390)
         Panel4.TabIndex = 4
+        ' 
+        ' dgvRecent
+        ' 
+        dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        dgvRecent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+        dgvRecent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvRecent.GridColor = Color.Black
+        dgvRecent.Location = New Point(28, 74)
+        dgvRecent.Name = "dgvRecent"
+        dgvRecent.RowHeadersWidth = 51
+        dgvRecent.Size = New Size(816, 297)
+        dgvRecent.TabIndex = 19
         ' 
         ' Label7
         ' 
@@ -321,18 +333,6 @@ Partial Class Stats
         Label2.TabIndex = 17
         Label2.Text = "Label2"
         ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
-        DataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.GridColor = Color.Black
-        DataGridView1.Location = New Point(28, 74)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(816, 297)
-        DataGridView1.TabIndex = 19
-        ' 
         ' Stats
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -362,7 +362,7 @@ Partial Class Stats
         Panel5.PerformLayout()
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvRecent, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -391,5 +391,5 @@ Partial Class Stats
     Friend WithEvents Panel6 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel7 As Panel
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvRecent As DataGridView
 End Class

@@ -1,4 +1,7 @@
-﻿Public Class Stats
+﻿Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
+
+Public Class Stats
 
     Private currentUser As UserSession
 
@@ -11,64 +14,135 @@
 
         If currentUser IsNot Nothing Then
             LabelName.Text = currentUser.UserName
-            'LoadStats()
+
+            LoadSummary(currentUser.UserId)   ' 🔥 Income, Expense, Balance
+            LoadRecent(currentUser.UserId)    ' 🔥 Recent Transactions
+
         Else
             MessageBox.Show("Session expired")
         End If
 
     End Sub
 
+    ' ===============================
+    ' 💰 LOAD SUMMARY (MONTHLY)
+    ' ===============================
+    Public Sub LoadSummary(userId As Integer)
+
+        Dim database As New db()
+        Dim conn As SqlConnection = database.OpenConn()
+
+        Dim query As String = "
+        SELECT 
+            SUM(CASE WHEN Type='Income' THEN Amount ELSE 0 END) AS Income,
+            SUM(CASE WHEN Type='Expense' THEN Amount ELSE 0 END) AS Expense
+        FROM Transactions
+        WHERE UserId=@uid 
+        AND MONTH(Date)=MONTH(GETDATE()) 
+        AND YEAR(Date)=YEAR(GETDATE())"
+
+        Using cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@uid", userId)
+
+            Dim reader = cmd.ExecuteReader()
+
+            If reader.Read() Then
+                Dim income As Decimal = If(IsDBNull(reader("Income")), 0, Convert.ToDecimal(reader("Income")))
+                Dim expense As Decimal = If(IsDBNull(reader("Expense")), 0, Convert.ToDecimal(reader("Expense")))
+
+                lblIncome.Text = "Income: ₹" & income
+                lblExpense.Text = "Expense: ₹" & expense
+                lblBalance.Text = "Balance: ₹" & (income - expense)
+
+                ' 🎨 Color balance
+                If (income - expense) >= 0 Then
+                    lblBalance.ForeColor = Color.Green
+                Else
+                    lblBalance.ForeColor = Color.Red
+                End If
+            End If
+
+        End Using
+
+        database.CloseConnection()
+
+    End Sub
+
+    ' ===============================
+    ' 📊 LOAD RECENT TRANSACTIONS
+    ' ===============================
+    Public Sub LoadRecent(userId As Integer)
+
+        Dim database As New db()
+        Dim conn As SqlConnection = database.OpenConn()
+
+        Dim query As String = "
+        SELECT TOP 5 Amount, Category, Type, Date
+        FROM Transactions
+        WHERE UserId=@uid
+        ORDER BY Date DESC"
+
+        Using cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@uid", userId)
+
+            Dim adapter As New SqlDataAdapter(cmd)
+            Dim table As New DataTable()
+            adapter.Fill(table)
+
+            dgvRecent.DataSource = table
+        End Using
+
+        database.CloseConnection()
+
+        SetupGrid()
+
+    End Sub
+
+    ' ===============================
+    ' 🎨 GRID UI SETTINGS
+    ' ===============================
+    Private Sub SetupGrid()
+
+        dgvRecent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvRecent.ReadOnly = True
+        dgvRecent.AllowUserToAddRows = False
+        dgvRecent.RowHeadersVisible = False
+
+        dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        dgvRecent.GridColor = Color.LightGray
+
+        ' Headers
+        dgvRecent.EnableHeadersVisualStyles = False
+        dgvRecent.ColumnHeadersDefaultCellStyle.BackColor = Color.Maroon
+        dgvRecent.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+
+        ' Rename columns
+        dgvRecent.Columns("Amount").HeaderText = "Amount 💰"
+        dgvRecent.Columns("Category").HeaderText = "Category"
+        dgvRecent.Columns("Type").HeaderText = "Type"
+        dgvRecent.Columns("Date").HeaderText = "Date"
+
+        ' Format date
+        dgvRecent.Columns("Date").DefaultCellStyle.Format = "dd MMM yyyy"
+
+        ' Color rows
+        For Each row As DataGridViewRow In dgvRecent.Rows
+            If row.Cells("Type").Value.ToString() = "Income" Then
+                row.DefaultCellStyle.ForeColor = Color.Green
+            Else
+                row.DefaultCellStyle.ForeColor = Color.Red
+            End If
+        Next
+
+    End Sub
+
+    ' ===============================
+    ' 🔄 NAVIGATION
+    ' ===============================
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim login As New Form1()
         login.Show()
         Me.Hide()
-    End Sub
-
-    Private Sub Button5_MouseHover(sender As Object, e As EventArgs) Handles Button5.MouseHover
-        Button5.BackColor = Color.White
-        Button5.ForeColor = Color.Maroon
-
-
-    End Sub
-
-    Private Sub Button5_MouseLeave(sender As Object, e As EventArgs) Handles Button5.MouseLeave
-        Button5.BackColor = Color.Maroon
-        Button5.ForeColor = Color.White
-
-
-    End Sub
-
-    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
-        Button2.BackColor = Color.Maroon
-        Button2.ForeColor = Color.White
-    End Sub
-
-    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
-        Button2.BackColor = Color.Transparent
-        Button2.ForeColor = Color.Maroon
-
-    End Sub
-
-
-    Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
-        Button3.BackColor = Color.Maroon
-        Button3.ForeColor = Color.White
-    End Sub
-
-    Private Sub Button3_MouseLeave(sender As Object, e As EventArgs) Handles Button3.MouseLeave
-        Button3.BackColor = Color.Transparent
-        Button3.ForeColor = Color.Maroon
-
-    End Sub
-    Private Sub Button4_MouseEnter(sender As Object, e As EventArgs) Handles Button4.MouseEnter
-        Button4.BackColor = Color.Maroon
-        Button4.ForeColor = Color.White
-    End Sub
-
-    Private Sub Button4_MouseLeave(sender As Object, e As EventArgs) Handles Button4.MouseLeave
-        Button4.BackColor = Color.Transparent
-        Button4.ForeColor = Color.Maroon
-
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -81,18 +155,6 @@
         Dim home As New HomePage(currentUser)
         home.Show()
         Me.Hide()
-
     End Sub
 
-    Private Sub lblBalance_Click(sender As Object, e As EventArgs) Handles lblBalance.Click
-
-    End Sub
-
-    Private Sub lblIncome_Click(sender As Object, e As EventArgs) Handles lblIncome.Click
-
-    End Sub
-
-    Private Sub lblExpense_Click(sender As Object, e As EventArgs) Handles lblExpense.Click
-
-    End Sub
 End Class
