@@ -29,9 +29,9 @@ Partial Class HomePage
         Button1 = New Button()
         Panel1 = New Panel()
         Panel2 = New Panel()
-        Button2 = New Button()
-        Button3 = New Button()
         Button4 = New Button()
+        Button3 = New Button()
+        Button2 = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
@@ -65,20 +65,20 @@ Partial Class HomePage
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Silver
-        Label2.Font = New Font("Segoe UI", 28.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
+        Label2.Font = New Font("Segoe UI", 28.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.Maroon
-        Label2.Location = New Point(424, 385)
+        Label2.Location = New Point(432, 509)
         Label2.Name = "Label2"
         Label2.Size = New Size(1012, 62)
         Label2.TabIndex = 5
-        Label2.Text = ChrW(8220) + "Track Every Expense. Build a Better Future." + ChrW(8221)
+        Label2.Text = ChrW(8220) & "Track Every Expense. Build a Better Future." & ChrW(8221)
         Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' LabelName
         ' 
         LabelName.AutoSize = True
         LabelName.BackColor = Color.LightGray
-        LabelName.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
+        LabelName.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         LabelName.Location = New Point(1468, 37)
         LabelName.Name = "LabelName"
         LabelName.Size = New Size(114, 28)
@@ -117,39 +117,15 @@ Partial Class HomePage
         Panel2.Controls.Add(Button3)
         Panel2.Controls.Add(Button2)
         Panel2.Dock = DockStyle.Bottom
-        Panel2.Location = New Point(0, 759)
+        Panel2.Location = New Point(0, 1028)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1837, 87)
         Panel2.TabIndex = 10
         ' 
-        ' Button2
-        ' 
-        Button2.BackColor = Color.Transparent
-        Button2.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
-        Button2.ForeColor = Color.Maroon
-        Button2.Location = New Point(819, 0)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(138, 87)
-        Button2.TabIndex = 0
-        Button2.Text = "Stats"
-        Button2.UseVisualStyleBackColor = False
-        ' 
-        ' Button3
-        ' 
-        Button3.BackColor = Color.Transparent
-        Button3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
-        Button3.ForeColor = Color.Maroon
-        Button3.Location = New Point(228, 0)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(138, 87)
-        Button3.TabIndex = 1
-        Button3.Text = "Reports"
-        Button3.UseVisualStyleBackColor = False
-        ' 
         ' Button4
         ' 
         Button4.BackColor = Color.Transparent
-        Button4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
+        Button4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = Color.Maroon
         Button4.Location = New Point(1428, 0)
         Button4.Name = "Button4"
@@ -158,13 +134,37 @@ Partial Class HomePage
         Button4.Text = "Accounts"
         Button4.UseVisualStyleBackColor = False
         ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.Transparent
+        Button3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button3.ForeColor = Color.Maroon
+        Button3.Location = New Point(228, 0)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(138, 87)
+        Button3.TabIndex = 1
+        Button3.Text = "Reports"
+        Button3.UseVisualStyleBackColor = False
+        ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.Transparent
+        Button2.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button2.ForeColor = Color.Maroon
+        Button2.Location = New Point(819, 0)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(138, 87)
+        Button2.TabIndex = 0
+        Button2.Text = "Stats"
+        Button2.UseVisualStyleBackColor = False
+        ' 
         ' HomePage
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.download
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(1837, 846)
+        ClientSize = New Size(1837, 1115)
         Controls.Add(Panel2)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
