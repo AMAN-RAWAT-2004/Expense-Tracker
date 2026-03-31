@@ -46,7 +46,6 @@ Partial Class Stats
         Label7 = New Label()
         Button5 = New Button()
         Label3 = New Label()
-        Label2 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         Panel1.SuspendLayout()
@@ -324,15 +323,6 @@ Partial Class Stats
         Label3.TabIndex = 0
         Label3.Text = "Overview"
         ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(0, 0)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(53, 20)
-        Label2.TabIndex = 17
-        Label2.Text = "Label2"
-        ' 
         ' Stats
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -340,7 +330,6 @@ Partial Class Stats
         BackgroundImage = My.Resources.Resources.download
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1837, 1175)
-        Controls.Add(Label2)
         Controls.Add(Panel3)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
@@ -378,7 +367,6 @@ Partial Class Stats
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label

@@ -24,9 +24,7 @@ Public Class Stats
 
     End Sub
 
-    ' ===============================
-    ' 💰 LOAD SUMMARY (MONTHLY)
-    ' ===============================
+    '  LOAD SUMMARY (MONTHLY)
     Public Sub LoadSummary(userId As Integer)
 
         Dim database As New db()
@@ -98,9 +96,8 @@ Public Class Stats
 
     End Sub
 
-    ' ===============================
-    ' 🎨 GRID UI SETTINGS
-    ' ===============================
+    '  GRID UI SETTINGS
+
     Private Sub SetupGrid()
 
         dgvRecent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
@@ -136,9 +133,9 @@ Public Class Stats
 
     End Sub
 
-    ' ===============================
-    ' 🔄 NAVIGATION
-    ' ===============================
+
+    '  NAVIGATION
+
     Private Sub ButtonLogout_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim login As New Form1()
         login.Show()
