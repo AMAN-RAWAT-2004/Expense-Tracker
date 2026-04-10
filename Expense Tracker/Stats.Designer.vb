@@ -127,7 +127,7 @@ Partial Class Stats
         Button4.Name = "Button4"
         Button4.Size = New Size(138, 87)
         Button4.TabIndex = 2
-        Button4.Text = "Accounts"
+        Button4.Text = "Monthly expenses"
         Button4.UseVisualStyleBackColor = False
         ' 
         ' Button3

@@ -88,9 +88,9 @@ Partial Class transactionForm
         ' 
         ' Button2
         ' 
-        Button2.BackColor = Color.Transparent
-        Button2.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        Button2.ForeColor = Color.Maroon
+        Button2.BackColor = Color.Maroon
+        Button2.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button2.ForeColor = Color.White
         Button2.Location = New Point(819, 0)
         Button2.Name = "Button2"
         Button2.Size = New Size(138, 87)
@@ -101,7 +101,7 @@ Partial Class transactionForm
         ' Button3
         ' 
         Button3.BackColor = Color.Transparent
-        Button3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button3.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = Color.Maroon
         Button3.Location = New Point(228, 0)
         Button3.Name = "Button3"
@@ -113,13 +113,13 @@ Partial Class transactionForm
         ' Button4
         ' 
         Button4.BackColor = Color.Transparent
-        Button4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button4.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = Color.Maroon
         Button4.Location = New Point(1428, 0)
         Button4.Name = "Button4"
         Button4.Size = New Size(138, 87)
         Button4.TabIndex = 2
-        Button4.Text = "Accounts"
+        Button4.Text = "Monthly expenses"
         Button4.UseVisualStyleBackColor = False
         ' 
         ' Panel2
@@ -138,7 +138,7 @@ Partial Class transactionForm
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.LightGray
-        Label1.Font = New Font("Showcard Gothic", 17F)
+        Label1.Font = New Font("Showcard Gothic", 17.0F)
         Label1.ForeColor = Color.Maroon
         Label1.Location = New Point(127, 29)
         Label1.Name = "Label1"
@@ -180,7 +180,7 @@ Partial Class transactionForm
         ' 
         ' AddTransactionBTN
         ' 
-        AddTransactionBTN.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        AddTransactionBTN.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         AddTransactionBTN.ForeColor = Color.Maroon
         AddTransactionBTN.Location = New Point(322, 679)
         AddTransactionBTN.Name = "AddTransactionBTN"
@@ -193,7 +193,7 @@ Partial Class transactionForm
         ' 
         Description.AutoSize = True
         Description.BackColor = Color.Transparent
-        Description.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Description.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Description.ForeColor = Color.White
         Description.Location = New Point(108, 493)
         Description.Name = "Description"
@@ -214,7 +214,7 @@ Partial Class transactionForm
         ' 
         Category.AutoSize = True
         Category.BackColor = Color.Transparent
-        Category.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Category.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Category.ForeColor = Color.White
         Category.Location = New Point(108, 394)
         Category.Name = "Category"
