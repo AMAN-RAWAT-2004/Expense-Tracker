@@ -41,13 +41,13 @@ Partial Class ExpenseCharts
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Panel3 = New Panel()
+        Label6 = New Label()
         Label5 = New Label()
         Label4 = New Label()
         Label3 = New Label()
         Label2 = New Label()
         PieChart1 = New LiveChartsCore.SkiaSharpView.WinForms.PieChart()
         CartesianChart1 = New LiveChartsCore.SkiaSharpView.WinForms.CartesianChart()
-        Label6 = New Label()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +178,16 @@ Partial Class ExpenseCharts
         Panel3.Size = New Size(1640, 929)
         Panel3.TabIndex = 16
         ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.Location = New Point(1020, 111)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(252, 31)
+        Label6.TabIndex = 6
+        Label6.Text = "SHOWING DATA FOR :"
+        ' 
         ' Label5
         ' 
         Label5.AutoSize = True
@@ -300,16 +310,6 @@ Partial Class ExpenseCharts
         CartesianChart1.Tooltip = SkDefaultTooltip2
         CartesianChart1.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.Automatic
         CartesianChart1.UpdaterThrottler = TimeSpan.Parse("00:00:00.0500000")
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(1020, 111)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(211, 31)
-        Label6.TabIndex = 6
-        Label6.Text = "Showing data for :"
         ' 
         ' ExpenseCharts
         ' 

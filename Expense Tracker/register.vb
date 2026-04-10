@@ -74,4 +74,6 @@ Public Class register
         Me.Hide()
 
     End Sub
+
+
 End Class

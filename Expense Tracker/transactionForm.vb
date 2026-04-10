@@ -129,4 +129,15 @@ Public Class transactionForm
         'Date.Value = DateTime.Now
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim ReportsPage As New Reports(currentUser)
+        ReportsPage.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Dim home As New HomePage(currentUser)
+        home.Show()
+        Me.Hide()
+    End Sub
 End Class

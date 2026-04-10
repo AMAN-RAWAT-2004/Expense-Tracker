@@ -68,7 +68,7 @@ Public Class ExpenseCharts
         Dim incomeSeries As New ColumnSeries(Of Double)
         incomeSeries.Name = "Income"
         incomeSeries.Values = New Double() {incomeTotal, 0}
-        incomeSeries.Fill = New SolidColorPaint(SKColors.DodgerBlue)
+        incomeSeries.Fill = New SolidColorPaint(SKColors.Green)
 
         Dim expenseSeries As New ColumnSeries(Of Double)
         expenseSeries.Name = "Expense"
@@ -82,6 +82,14 @@ Public Class ExpenseCharts
         .Labels = New String() {"Income", "Expense"}
     }
 }
+        Dim maxValue As Double = Math.Max(incomeTotal, expenseTotal)
+
+        CartesianChart1.YAxes = New Axis() {
+            New Axis With {
+                .MinLimit = 0,
+                .MaxLimit = maxValue + 5000
+            }
+        }
 
     End Sub
 
@@ -115,6 +123,16 @@ Public Class ExpenseCharts
                 pieSeries.Name = category
                 pieSeries.Values = New Double() {total}
 
+                ' 🏷️ Show labels on chart
+                pieSeries.DataLabelsPaint = New SolidColorPaint(SKColors.Black)
+                pieSeries.DataLabelsSize = 14
+
+                ' 📊 Customize label text
+                pieSeries.DataLabelsFormatter = Function(point As LiveChartsCore.Kernel.ChartPoint)
+                                                    Return category & " " & vbLf & " " &
+           Math.Round(point.StackedValue.Share * 100, 1) & "%"
+                                                End Function
+
                 seriesList.Add(pieSeries)
             End While
 
@@ -141,5 +159,18 @@ Public Class ExpenseCharts
         stats.Show()
         Me.Hide()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim ReportsPage As New Reports(currentUser)
+        ReportsPage.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Dim home As New HomePage(currentUser)
+        home.Show()
+        Me.Hide()
+    End Sub
+
 
 End Class

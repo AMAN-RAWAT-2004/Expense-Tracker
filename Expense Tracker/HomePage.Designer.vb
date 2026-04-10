@@ -65,20 +65,20 @@ Partial Class HomePage
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Silver
-        Label2.Font = New Font("Segoe UI", 28.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Segoe UI", 28.2F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
         Label2.ForeColor = Color.Maroon
         Label2.Location = New Point(432, 509)
         Label2.Name = "Label2"
         Label2.Size = New Size(1012, 62)
         Label2.TabIndex = 5
-        Label2.Text = ChrW(8220) & "Track Every Expense. Build a Better Future." & ChrW(8221)
+        Label2.Text = ChrW(8220) + "Track Every Expense. Build a Better Future." + ChrW(8221)
         Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' LabelName
         ' 
         LabelName.AutoSize = True
         LabelName.BackColor = Color.LightGray
-        LabelName.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        LabelName.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
         LabelName.Location = New Point(1468, 37)
         LabelName.Name = "LabelName"
         LabelName.Size = New Size(114, 28)
@@ -88,7 +88,7 @@ Partial Class HomePage
         ' Button1
         ' 
         Button1.BackColor = Color.Maroon
-        Button1.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        Button1.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
         Button1.ForeColor = Color.White
         Button1.Location = New Point(1600, 31)
         Button1.Name = "Button1"
@@ -125,7 +125,7 @@ Partial Class HomePage
         ' Button4
         ' 
         Button4.BackColor = Color.Transparent
-        Button4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button4.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
         Button4.ForeColor = Color.Maroon
         Button4.Location = New Point(1428, 0)
         Button4.Name = "Button4"
@@ -137,7 +137,7 @@ Partial Class HomePage
         ' Button3
         ' 
         Button3.BackColor = Color.Transparent
-        Button3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button3.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
         Button3.ForeColor = Color.Maroon
         Button3.Location = New Point(228, 0)
         Button3.Name = "Button3"
@@ -149,7 +149,7 @@ Partial Class HomePage
         ' Button2
         ' 
         Button2.BackColor = Color.Transparent
-        Button2.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Button2.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, 0)
         Button2.ForeColor = Color.Maroon
         Button2.Location = New Point(819, 0)
         Button2.Name = "Button2"

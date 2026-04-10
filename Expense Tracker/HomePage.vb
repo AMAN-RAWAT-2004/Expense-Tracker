@@ -41,6 +41,11 @@
         Button2.ForeColor = Color.Maroon
 
     End Sub
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim ReportsPage As New Reports(currentUser)
+        ReportsPage.Show()
+        Me.Hide()
+    End Sub
     Private Sub Button3_MouseEnter(sender As Object, e As EventArgs) Handles Button3.MouseEnter
         Button3.BackColor = Color.Maroon
         Button3.ForeColor = Color.White
